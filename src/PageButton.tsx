@@ -2,7 +2,7 @@ import * as React from 'react';
 import { PropTypes, StandardProps } from '@material-ui/core';
 import Button, { ButtonProps } from '@material-ui/core/Button';
 import { createStyles, Theme, WithStyles, withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import { getOffset } from './core';
 
 export type PageButtonClassKey =
@@ -32,7 +32,7 @@ export type PageButtonClassKey =
   | 'fullWidth';
 
 const styles = (theme: Theme) =>
-  createStyles<PageButtonClassKey>({
+  createStyles<PageButtonClassKey, PageButtonProps>({
     root: {
       minWidth: 16
     },
@@ -164,23 +164,23 @@ const PageButton: React.FunctionComponent<
     sizeLargeStandard,
     ...classes
   } = classesProp;
-  classes.root = classNames(classes.root, {
+  classes.root = clsx(classes.root, {
     [rootCurrent]: isCurrent,
     [rootEllipsis]: isEllipsis,
     [rootEnd]: isEnd,
     [rootStandard]: isStandard
   });
-  classes.colorInherit = classNames(classes.colorInherit, {
+  classes.colorInherit = clsx(classes.colorInherit, {
     [colorInheritCurrent]: isCurrent,
     [colorInheritOther]: !isCurrent
   });
-  classes.sizeSmall = classNames(classes.sizeSmall, {
+  classes.sizeSmall = clsx(classes.sizeSmall, {
     [sizeSmallCurrent]: isCurrent && isSmall,
     [sizeSmallEllipsis]: isEllipsis && isSmall,
     [sizeSmallEnd]: isEnd && isSmall,
     [sizeSmallStandard]: isStandard && isSmall
   });
-  classes.sizeLarge = classNames(classes.sizeLarge, {
+  classes.sizeLarge = clsx(classes.sizeLarge, {
     [sizeLargeCurrent]: isCurrent && isLarge,
     [sizeLargeEllipsis]: isEllipsis && isLarge,
     [sizeLargeEnd]: isEnd && isLarge,

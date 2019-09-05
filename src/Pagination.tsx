@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { PropTypes, StandardProps } from '@material-ui/core';
 import { createStyles, WithStyles, withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+import clsx from 'clsx';
 import PageButton, { PageButtonClassKey, PageVariant } from './PageButton';
 import { computePages, PagePosition, Position } from './core';
 
 export type PaginationClassKey = PageButtonClassKey;
 
-const styles = createStyles<PaginationClassKey>({
+const styles = createStyles<PaginationClassKey, PaginationProps>({
   root: {},
   rootCurrent: {},
   rootEllipsis: {},
@@ -85,7 +85,7 @@ const Pagination: React.FunctionComponent<
 
   const { root, ...buttonClasses } = classes;
 
-  const className = classNames(root, classNameProp);
+  const className = clsx(root, classNameProp);
 
   const innerButtonCount = reduced ? 1 : innerButtonCountProp!;
   const outerButtonCount = reduced ? 1 : outerButtonCountProp!;

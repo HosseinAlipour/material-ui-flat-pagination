@@ -1,9 +1,11 @@
 import { ReactWrapper } from 'enzyme';
+import Button from '@material-ui/core/Button';
+import PageButton from '../src/PageButton';
 
-export const findPageButton = (wrapper: ReactWrapper): ReactWrapper => {
-  return wrapper.find('PageButton');
+export const findPageButton = (wrapper: ReactWrapper<any>) => {
+  return wrapper.find(PageButton);
 };
 
-export const findMuiButton = (wrapper: ReactWrapper): ReactWrapper => {
-  return wrapper.find('Button');
+export const findMuiButton = (wrapper: ReactWrapper<any>) => {
+  return wrapper.find(Button);
 };
