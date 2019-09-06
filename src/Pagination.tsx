@@ -54,6 +54,7 @@ export interface PaginationProps
   previousPageLabel?: React.ReactNode;
   reduced?: boolean;
   size?: 'small' | 'medium' | 'large';
+  renderComponent?: Function;
 }
 
 const Pagination: React.FunctionComponent<
@@ -80,6 +81,7 @@ const Pagination: React.FunctionComponent<
     previousPageLabel,
     reduced,
     size,
+    renderComponent,
     ...other
   } = props;
 
@@ -122,28 +124,31 @@ const Pagination: React.FunctionComponent<
               pageVariant = 'standard';
               break;
           }
-
-          return (
-            <PageButton
-              limit={limit}
-              page={pp.page}
-              total={total}
-              centerRipple={centerRipple}
-              classes={buttonClasses}
-              currentPageColor={currentPageColor}
-              disabled={disabled}
-              disableFocusRipple={disableFocusRipple}
-              disableRipple={disableRipple}
-              fullWidth={fullWidth}
-              key={key}
-              onClick={onClick}
-              otherPageColor={otherPageColor}
-              pageVariant={pageVariant}
-              size={size}
-            >
-              {children}
-            </PageButton>
-          );
+          {
+            renderComponent &&
+              renderComponent(
+                props,
+                <PageButton
+                  limit={limit}
+                  page={pp.page}
+                  total={total}
+                  centerRipple={centerRipple}
+                  classes={buttonClasses}
+                  currentPageColor={currentPageColor}
+                  disabled={disabled}
+                  disableFocusRipple={disableFocusRipple}
+                  disableRipple={disableRipple}
+                  fullWidth={fullWidth}
+                  key={key}
+                  onClick={onClick}
+                  otherPageColor={otherPageColor}
+                  pageVariant={pageVariant}
+                  size={size}
+                >
+                  {children}
+                </PageButton>
+              );
+          }
         }
       )}
     </Component>
