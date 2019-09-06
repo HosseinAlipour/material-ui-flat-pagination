@@ -45,7 +45,7 @@
     "package.json",
     "README.md"
   ],
-  "homepage": "https://github.com/szmslab/material-ui-flat-pagination#readme",
+  "homepage": "https://github.com/hosseinalipour/material-ui-flat-pagination#readme",
   "keywords": [
     "pagination",
     "material-ui",
@@ -55,13 +55,14 @@
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/szmslab/material-ui-flat-pagination.git"
+    "url": "git+https://github.com/hosseinalipour/material-ui-flat-pagination.git"
   },
   "scripts": {
     "build": "rimraf lib && tsc",
     "lint": "tslint src/**/*.ts{,x}",
     "jest": "jest --config=jest.config.json",
-    "test": "jest --config=jest.config.json && coveralls < ./coverage/lcov.info"
+    "test": "jest --config=jest.config.json && coveralls < ./coverage/lcov.info",
+    "prepublish": "tsc"
   },
   "types": "./lib/index.d.ts"
 }
